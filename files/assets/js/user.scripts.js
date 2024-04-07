@@ -25,8 +25,10 @@ $(document).ready(function(){
     let name = $("#name").val();
     let surname = $("#surname").val();
     let email = $("#email").val();
-    let area =  $("#area").val();
-    let road =  $("#road").val();
+    let address = {
+      area: $("#area").val(),
+      road: $("#road").val()
+    }  
 
     const item = {
       'username': username,
@@ -34,23 +36,22 @@ $(document).ready(function(){
       'name': name,
       'surname': surname,
       'email': email,
-      'area': area,
-      'road': road
+      'address': address
     }
 
     console.log($('.btnSubmit').val(), item);
     $.ajax({
       url: "http://localhost:3000/api/users",
       type: "post",
-      data: item,
-      dataType: "JSON",
+      data: JSON.stringify(item),
+      dataType: "json",
+      contentType: "application/json; charset=utf-8"
       // encode: true,
     })
     .done( function(response) {
       // console.log(">>", response);
       
       let data = response.data;
-      let status = response.status
   
       if (data) { 
           console.log(true,'Επιτυχής εισαγωγή του χρήστη');
@@ -97,8 +98,8 @@ function createTbody(data){
       "<td>" + address + "</td>" +
       "<td>" + phone + "</td>" +      
       "<td>" +
-          "<button class='btnUpdate btn btn-primary' value=\'"+username+"\'>Τροποποίηση</button> " +
-          "<button class='btnDelete btn btn-primary' value=\'"+username+"\'>Διαγραφή</button>" +
+          "<button class='btnUpdate btn btn-primary' value=\'" + username + "\'>Τροποποίηση</button> " +
+          "<button class='btnDelete btn btn-primary' value=\'" + username + "\'>Διαγραφή</button>" +
       "</td>" + 
       "</tr>";
 
