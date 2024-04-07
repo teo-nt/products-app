@@ -13,7 +13,7 @@ $(document).ready(function(){
       if (status) { 
           createTbody(data);
       } else {
-          alert(false,'Πρόβλημα στην αναζήτηση των προΐόντων ('+ data.message + ')');
+          alert(false,'Πρόβλημα στην αναζήτηση των προϊόντων ('+ data.message + ')');
           // console.log(data);
       }
     });
@@ -48,13 +48,13 @@ $(document).ready(function(){
         let data = response.data;
     
         if (data) { 
-            console.log(true,'Επιτυχής εισαγωγή του προΐόντος');
-            alert(true,'Επιτυχής εισαγωγή του προΐόντος');
+            console.log(true,'Επιτυχής εισαγωγή του προϊόντος');
+            alert(true,'Επιτυχής εισαγωγή του προϊόντος');
             $('#frmProduct')[0].reset();
             window.location.replace("http://localhost:3000/product/find.html")
         } else {
-            console.log(false,'Πρόβλημα στην εισαγωγή του προΐόντος ('+ data.message + ')');
-            alert(false,'Πρόβλημα στην εισαγωγή του προΐόντος ('+ data.message + ')');
+            console.log(false,'Πρόβλημα στην εισαγωγή του προϊόντος ('+ data.message + ')');
+            alert(false,'Πρόβλημα στην εισαγωγή του προϊόντος ('+ data.message + ')');
             $('#frmProduct')[0].reset();
             // console.log(data.message);
         }
